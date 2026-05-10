@@ -1,0 +1,37 @@
+{
+  "verdad_consensuada": [
+    "El Poder Ejecutivo firmó un DNU que reasigna partidas presupuestarias del sistema universitario nacional.",
+    "El decreto fue publicado en el Boletín Oficial con fecha confirmada.",
+    "Las universidades públicas convocaron a reuniones de emergencia en sus consejos superiores."
+  ],
+  "datos_aislados": [
+    {
+      "hecho": "Suspensión de una medida cautelar a favor de las universidades antes del 12M.",
+      "fuente": "Perfil"
+    },
+    {
+      "hecho": "Mención específica al recorte en la UBA por $48.000 millones.",
+      "fuente": "Página/12"
+    },
+    {
+      "hecho": "Cita textual de Milei: 'No lo voy a ejecutar para ganar una elección'.",
+      "fuente": "Noticias Argentinas"
+    }
+  ],
+  "contradicciones": [
+    {
+      "punto_de_choque": "Naturaleza del DNU",
+      "versiones": {
+        "Clarín": "El decreto reordena partidas para optimizar el gasto educativo.",
+        "Tiempo Argentino": "Es un ajuste encubierto que vacía el sistema universitario público."
+      }
+    },
+    {
+      "punto_de_choque": "Magnitud del recorte",
+      "versiones": {
+        "La Nación": "El impacto sería marginal, menos del 4% del presupuesto consolidado.",
+        "C5N": "El recorte real supera el 30% en términos de poder de compra."
+      }
+    }
+  ]
+}

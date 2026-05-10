@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg-primary: #0a0c12;
+  --color-bg-elevated: #11141d;
+  --color-bg-card: #1a1d2e;
+  --color-border-card: #2d3148;
+  --color-border-subtle: #1f2335;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-accent-green: #10b981;
+  --color-accent-yellow: #eab308;
+  --color-accent-red: #ef4444;
+
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgba(99, 102, 241, 0.04),
+    transparent 60%
+  );
+}
+
+::selection {
+  background: rgba(239, 68, 68, 0.4);
+  color: #ffffff;
+}
+
+.glow-red {
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.55));
+}
+
+.fade-in {
+  animation: fadeIn 250ms ease-out both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating search button — gentle vertical bob to attract the eye */
+@keyframes searchFabBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-search-fab { animation: searchFabBob 2.6s ease-in-out infinite; }
+
+/* Welcome "Explorá" pill — slow scale breath */
+@keyframes explorePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+.animate-explore-pulse { animation: explorePulse 2.8s ease-in-out infinite; }
+
+/* Welcome "Explorá" pill — outward sonar ring */
+@keyframes exploreRadar {
+  0%   { transform: scale(1);    opacity: 0.55; }
+  100% { transform: scale(1.35); opacity: 0;    }
+}
+.animate-explore-radar { animation: exploreRadar 2.4s ease-out infinite; }
+
+/* Scrollbar (subtle, dark) */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2d3148; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3f5c; }

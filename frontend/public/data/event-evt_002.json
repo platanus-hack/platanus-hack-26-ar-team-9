@@ -1,0 +1,42 @@
+{
+  "verdad_consensuada": [
+    "La Justicia investiga una red de presuntas coimas vinculada al sistema SIRA de importaciones.",
+    "Se levantó el secreto de sumario en la causa.",
+    "Existen chats y audios que exponen maniobras para liberar importaciones a cambio de sobornos.",
+    "El presidente Milei brindó respaldo público a Manuel Adorni tras el estallido del escándalo."
+  ],
+  "datos_aislados": [
+    {
+      "hecho": "La cifra de las coimas se sitúa en torno al 15 por ciento.",
+      "fuente": "CADENA LASER"
+    },
+    {
+      "hecho": "Mención de chats con la frase 'Billetes cara grande jaja'.",
+      "fuente": "iProfesional"
+    },
+    {
+      "hecho": "Bullrich realizó declaraciones taxativas condicionando a Adorni.",
+      "fuente": "Diario Neuquino / Perfil"
+    },
+    {
+      "hecho": "Investigación específica sobre Martín Migueles en relación al esquema.",
+      "fuente": "MDZ Online"
+    }
+  ],
+  "contradicciones": [
+    {
+      "punto_de_choque": "Origen temporal de la maniobra",
+      "versiones": {
+        "Diario Neuquino": "Investigan esquema de sobornos durante la gestión kirchnerista.",
+        "Página/12": "Los audios afectan claramente a la gestión actual y al entorno de Adorni."
+      }
+    },
+    {
+      "punto_de_choque": "Porcentaje de la coima reportado",
+      "versiones": {
+        "La Nación": "Audios mencionan cobro de 'más o menos un 11 o un 12%'.",
+        "CADENA LASER": "Reporta el cobro de coimas del '15 por ciento' como cifra firme."
+      }
+    }
+  ]
+}
