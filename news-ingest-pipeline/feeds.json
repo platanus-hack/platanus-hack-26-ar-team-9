@@ -1,0 +1,19 @@
+[
+  { "slug": "clarin",          "name": "Clarín",                "baseUrl": "https://www.clarin.com",          "feedUrl": "https://www.clarin.com/rss/lo-ultimo/" },
+  { "slug": "lanacion",        "name": "La Nación",             "baseUrl": "https://www.lanacion.com.ar",     "feedUrl": "https://www.lanacion.com.ar/arc/outboundfeeds/rss/" },
+  { "slug": "infobae",         "name": "Infobae",               "baseUrl": "https://www.infobae.com",         "feedUrl": "https://www.infobae.com/arc/outboundfeeds/rss/" },
+  { "slug": "ambito",          "name": "Ámbito",                "baseUrl": "https://www.ambito.com",          "feedUrl": "https://www.ambito.com/rss/pages/home.xml" },
+  { "slug": "perfil",          "name": "Perfil",                "baseUrl": "https://www.perfil.com",          "feedUrl": "https://www.perfil.com/feed" },
+  { "slug": "lavoz",           "name": "La Voz",                "baseUrl": "https://www.lavoz.com.ar",        "feedUrl": "https://www.lavoz.com.ar/arc/outboundfeeds/feeds/rss/?outputType=xml" },
+  { "slug": "baenegocios",     "name": "BAE Negocios",          "baseUrl": "https://www.baenegocios.com",     "feedUrl": "https://www.baenegocios.com/files/rss/ultimas-noticias.xml" },
+  { "slug": "lagaceta",        "name": "La Gaceta",             "baseUrl": "https://www.lagaceta.com.ar",     "feedUrl": "https://www.lagaceta.com.ar/rss" },
+  { "slug": "rionegro",        "name": "Río Negro",             "baseUrl": "https://www.rionegro.com.ar",     "feedUrl": "https://www.rionegro.com.ar/feed/" },
+  { "slug": "tn",              "name": "TN",                    "baseUrl": "https://tn.com.ar",               "feedUrl": "https://tn.com.ar/feed/" },
+  { "slug": "pagina12",        "name": "Página/12",             "baseUrl": "https://www.pagina12.com.ar",     "feedUrl": "https://www.pagina12.com.ar/arc/outboundfeeds/rss/" },
+  { "slug": "cronista",        "name": "El Cronista",           "baseUrl": "https://www.cronista.com",        "feedUrl": "https://www.cronista.com/arc/outboundfeeds/rss/" },
+  { "slug": "iprofesional",    "name": "iProfesional Economía", "baseUrl": "https://www.iprofesional.com",    "feedUrl": "https://www.iprofesional.com/rss/economia" },
+  { "slug": "iprofesionaltech","name": "iProfesional Tecnología","baseUrl": "https://www.iprofesional.com",   "feedUrl": "https://www.iprofesional.com/rss/tecnologia" },
+  { "slug": "cba24n",          "name": "CBA24N",                "baseUrl": "https://www.cba24n.com.ar",       "feedUrl": "https://www.cba24n.com.ar/rss" },
+  { "slug": "noticiasarg",     "name": "Noticias Argentinas",   "baseUrl": "https://noticiasargentinas.com",  "feedUrl": "https://noticiasargentinas.com/rss" },
+  { "slug": "tiempoar",        "name": "Tiempo Argentino",      "baseUrl": "https://www.tiempoar.com.ar",     "feedUrl": "https://www.tiempoar.com.ar/rss" }
+]
