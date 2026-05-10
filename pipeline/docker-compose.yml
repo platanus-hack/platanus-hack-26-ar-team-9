@@ -1,0 +1,60 @@
+# Docker Compose para levantar el pipeline + su DB Postgres con el dump.
+#
+# Uso:
+#   docker-compose up --build
+#
+# Requisitos en .env (en este mismo directorio):
+#   ANTHROPIC_API_KEY=sk-ant-...
+#
+# El SCRAPER_DB_URL ya está hardcodeado al Postgres local del compose.
+# No hace falta setearlo en .env.
+
+services:
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: axioma-pipeline
+    ports:
+      - "5000:5000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      # Conexión al Postgres del compose. Hostname = nombre del service ("scraper-pg")
+      # porque dentro de la red interna de Docker, los containers se ven por nombre.
+      # Sobreescribible vía .env si algún día apuntás a otra DB.
+      - SCRAPER_DB_URL=${SCRAPER_DB_URL:-postgresql://postgres:hackaton@scraper-pg:5432/scraper}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    depends_on:
+      scraper-pg:
+        condition: service_healthy
+
+  scraper-pg:
+    image: postgres:16
+    container_name: axioma-scraper-pg
+    environment:
+      POSTGRES_PASSWORD: hackaton
+      POSTGRES_DB: scraper
+      POSTGRES_USER: postgres
+    ports:
+      # Exponemos al host por si querés conectarte con psql / DBeaver
+      # desde tu Mac. Internamente entre containers se usa scraper-pg:5432.
+      - "5432:5432"
+    volumes:
+      # Schema y dump se cargan automáticamente al primer arranque
+      # (postgres image ejecuta scripts en /docker-entrypoint-initdb.d en orden alfabético).
+      - ./scraper_db_schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ../articles_dump.sql:/docker-entrypoint-initdb.d/02-data.sql:ro
+      # Volume nombrado para persistir la DB entre `down` / `up`.
+      # Si querés resetear y recargar el dump: `docker-compose down -v` (borra volumen).
+      - scraper-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d scraper"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  scraper-pg-data:

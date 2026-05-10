@@ -1,0 +1,19 @@
+# Archivos que no van a la imagen (acelera el build y reduce tamaño).
+.git
+.gitignore
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+tests
+data
+*.log
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*
+*.md
+Dockerfile
+.dockerignore
+docker-compose.yml

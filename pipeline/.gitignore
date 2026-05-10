@@ -1,0 +1,11 @@
+pipeline/.env
+pipeline/data/
+pipeline/__pycache__/
+pipeline/tests/__pycache__/
+pipeline/server.log
+pipeline/server_err.log
+pipeline/noticias_hoy.txt
+pipeline/noticias_parseadas.json
+pipeline/consenso.json
+*.pyc
+.pytest_cache/
