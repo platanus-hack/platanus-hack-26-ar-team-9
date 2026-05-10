@@ -25,6 +25,7 @@ services:
       - SCRAPER_DB_URL=${SCRAPER_DB_URL:-postgresql://postgres:hackaton@scraper-pg:5432/scraper}
     volumes:
       - ./data:/app/data
+      - ../config.toml:/app/config.toml:ro
     restart: unless-stopped
     depends_on:
       scraper-pg:

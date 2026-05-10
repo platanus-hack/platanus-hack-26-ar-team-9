@@ -18,6 +18,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from config_loader import config as _cfg
 from llm import call_sonnet
 from pg_store import (
     load_events_for_axioma,
@@ -28,23 +29,15 @@ from pg_store import (
 from prompts import AXIOMA_PROMPT
 
 
-MIN_SOURCES = 2          # piso para correr axioma (sin esto no hay consenso posible)
-MAX_BODY_CHARS = 2500    # cap por body.
-MAX_ITEMS_PER_EVENT = 6  # cap de notas mandadas a Sonnet por event. Eventos con 11+ notas
-                         # generaban prompts de 28k chars y respuestas que excedían max_tokens.
-                         # Las notas cortadas son las MÁS VIEJAS (orden del query es DESC).
+_ax_cfg = _cfg.get("axioma", {})
 
-# Output. Subido a 4096 (era 2048) — events con muchas contradicciones/datos
-# aislados llegaban al límite y Sonnet truncaba el JSON → "invalid_json".
-MAX_OUTPUT_TOKENS = 4096
-
-# Paralelismo. Bajamos a 4 (era 8): con 130+ events y bodies completos, demasiados
-# workers golpean ITPM. Para subir/bajar: MAX_WORKERS_AXIOMA env.
-MAX_WORKERS = int(os.getenv("MAX_WORKERS_AXIOMA", "4"))
-
-# Slow-call threshold: si una llamada Sonnet pasa este tiempo, lo logueamos
-# como "slow" (no es timeout, solo señal de que algo se está poniendo pesado).
-SLOW_CALL_THRESHOLD = 30.0
+MIN_SOURCES         = int(_ax_cfg.get("min_sources",         2))
+MAX_BODY_CHARS      = int(_ax_cfg.get("max_body_chars",      2500))
+MAX_ITEMS_PER_EVENT = int(_ax_cfg.get("max_items_per_event", 6))
+MAX_OUTPUT_TOKENS   = int(_ax_cfg.get("max_output_tokens",   4096))
+SLOW_CALL_THRESHOLD = float(_ax_cfg.get("slow_call_threshold", 30.0))
+# env var sobreescribe config.toml para ajuste rápido en producción
+MAX_WORKERS = int(os.getenv("MAX_WORKERS_AXIOMA") or _ax_cfg.get("max_workers", 4))
 
 
 def _compute_divergence(contradicciones: list, datos_aislados: list, media_count: int) -> float:

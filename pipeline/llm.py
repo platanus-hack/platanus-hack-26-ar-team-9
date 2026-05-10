@@ -16,11 +16,15 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from config_loader import config as _cfg
+
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
-# IDs de modelos. Si Anthropic cambia naming, actualizar acá.
-SONNET_MODEL = "claude-sonnet-4-6"
-HAIKU_MODEL = "claude-haiku-4-5"
+_llm_cfg = _cfg.get("llm", {})
+_llm_defaults = _llm_cfg.get("defaults", {})
+
+SONNET_MODEL = _llm_cfg.get("sonnet_model", "claude-sonnet-4-6")
+HAIKU_MODEL  = _llm_cfg.get("haiku_model",  "claude-haiku-4-5")
 
 # Lazy import + lazy init del cliente. Esto permite importar este módulo en tests
 # que no usan Claude (slugify, hash, clustering) sin requerir anthropic instalado.
@@ -146,11 +150,21 @@ def call(model: str, system: str, user: str, max_retries: int = 3, max_tokens: i
     return {"error": "max_retries_exhausted", "detail": last_error or ""}
 
 
-def call_sonnet(system: str, user: str, max_tokens: int = 4096, timeout: float = 120.0) -> dict:
+def call_sonnet(
+    system: str,
+    user: str,
+    max_tokens: int = _llm_defaults.get("sonnet_max_tokens", 4096),
+    timeout: float = _llm_defaults.get("sonnet_timeout", 120.0),
+) -> dict:
     """Helper específico para Sonnet (bias, axioma). Timeout 120s por defecto — bodies largos pueden tardar."""
     return call(SONNET_MODEL, system, user, max_tokens=max_tokens, timeout=timeout)
 
 
-def call_haiku(system: str, user: str, max_tokens: int = 256, timeout: float = 30.0) -> dict:
+def call_haiku(
+    system: str,
+    user: str,
+    max_tokens: int = _llm_defaults.get("haiku_max_tokens", 256),
+    timeout: float = _llm_defaults.get("haiku_timeout", 30.0),
+) -> dict:
     """Helper específico para Haiku (naming). max_tokens chico porque output es corto."""
     return call(HAIKU_MODEL, system, user, max_tokens=max_tokens, timeout=timeout)

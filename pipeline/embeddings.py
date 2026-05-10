@@ -20,20 +20,25 @@ from typing import List
 
 import numpy as np
 
+from config_loader import config as _cfg
+
+_emb_cfg = _cfg.get("embeddings", {})
+_EMBED_MODEL    = _emb_cfg.get("model",          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+_TITLE_WEIGHT   = float(_emb_cfg.get("title_weight",   0.7))
+_LEAD_MAX_CHARS = int(_emb_cfg.get("lead_max_chars",   500))
+_BATCH_SIZE     = int(_emb_cfg.get("batch_size",        64))
+
 _st_model = None
 _lock = threading.Lock()
 
 
 def _get_st_model():
-    """Carga sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 (multilingual, ES OK)."""
     global _st_model
     if _st_model is None:
         with _lock:
             if _st_model is None:
                 from sentence_transformers import SentenceTransformer
-                _st_model = SentenceTransformer(
-                    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-                )
+                _st_model = SentenceTransformer(_EMBED_MODEL)
     return _st_model
 
 
@@ -43,10 +48,10 @@ def encode_text(text: str) -> np.ndarray:
     return model.encode([text])[0].astype(np.float32)
 
 
-def embed_articles(articles: List[dict], lead_chars: int = 500) -> None:
+def embed_articles(articles: List[dict], lead_chars: int = _LEAD_MAX_CHARS) -> None:
     """
     Mutates `articles` in-place agregando 'embedding' (np.float32 array de 384 dim).
-    Combina title (peso 0.7) + lead (peso 0.3) para el vector final.
+    Combina title (peso title_weight) + lead (peso 1-title_weight) para el vector final.
 
     Si content/summary es vacío/None, usa solo title.
     """
@@ -57,14 +62,15 @@ def embed_articles(articles: List[dict], lead_chars: int = 500) -> None:
     titles = [a.get("title", "") or "" for a in articles]
     leads = [(a.get("content") or a.get("summary") or "")[:lead_chars] for a in articles]
 
-    title_embs = model.encode(titles, batch_size=64, show_progress_bar=False)
-    lead_embs = model.encode(leads, batch_size=64, show_progress_bar=False)
+    title_embs = model.encode(titles, batch_size=_BATCH_SIZE, show_progress_bar=False)
+    lead_embs = model.encode(leads, batch_size=_BATCH_SIZE, show_progress_bar=False)
 
+    lead_weight = 1.0 - _TITLE_WEIGHT
     for a, t_emb, l_emb in zip(articles, title_embs, lead_embs):
         if not (a.get("content") or a.get("summary")):
             combined = t_emb
         else:
-            combined = 0.7 * t_emb + 0.3 * l_emb
+            combined = _TITLE_WEIGHT * t_emb + lead_weight * l_emb
         a["embedding"] = combined.astype(np.float32)
 
 

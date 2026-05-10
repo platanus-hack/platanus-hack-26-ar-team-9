@@ -1,0 +1,59 @@
+# ============================================================
+#  Configuración del pipeline — editar a gusto después de clonar.
+#  Los secretos (API keys, DB URL) van en pipeline/.env
+# ============================================================
+
+# ── Modelos LLM ─────────────────────────────────────────────
+[llm]
+sonnet_model = "claude-sonnet-4-6"   # usado en axioma (síntesis multi-fuente)
+haiku_model  = "claude-haiku-4-5"    # usado en naming, clasificación de topics
+
+[llm.defaults]
+haiku_max_tokens  = 256
+sonnet_max_tokens = 4096
+haiku_timeout     = 30.0             # segundos por llamada a Haiku
+sonnet_timeout    = 120.0            # segundos por llamada a Sonnet (bodies largos)
+max_retries       = 3
+
+# ── Embeddings locales ───────────────────────────────────────
+[embeddings]
+# Modelo de sentence-transformers. Debe ser multilingüe si hay noticias en ES.
+# Opciones populares:
+#   "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"  (~120 MB, rápido)
+#   "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"  (~420 MB, más preciso)
+model          = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+title_weight   = 0.7    # peso del título; lead_weight = 1 - title_weight
+lead_max_chars = 500    # chars máximos del lead/content usados para el embedding
+batch_size     = 64     # artículos procesados por lote en encode()
+
+# ── Clustering K-means ───────────────────────────────────────
+[clustering]
+k_min               = 2    # K mínimo en el sweep de silhouette
+min_per_cluster     = 3    # define K_max dinámico = N / min_per_cluster
+random_state        = 42
+max_recursion_depth = 2    # veces que se puede sub-dividir un cluster heterogéneo
+min_for_subcluster  = 4    # artículos mínimos para intentar sub-división
+sub_k_max           = 4    # K máximo del KMeans interno en sub-clusters
+umap_n_neighbors    = 25   # balance local/global en UMAP (cap a min(n-1, este valor))
+umap_min_dist       = 0.15 # dispersión de puntos en el mapa 2D
+
+# ── Axioma (consenso multi-fuente) ───────────────────────────
+[axioma]
+min_sources         = 2      # fuentes mínimas para correr axioma en un evento
+max_body_chars      = 2500   # cap de chars por body de artículo enviado a Sonnet
+max_items_per_event = 6      # máx de artículos por evento enviados a Sonnet
+max_output_tokens   = 4096   # tokens máximos en la respuesta de Sonnet
+slow_call_threshold = 30.0   # segundos: loguea la llamada como "slow" si supera esto
+max_workers         = 4      # threads paralelos (sobreescribible con MAX_WORKERS_AXIOMA)
+
+# ── Topics ───────────────────────────────────────────────────
+[topics]
+max_workers = 10   # threads paralelos para clasificación (sobreescribible con MAX_WORKERS_TOPICS)
+
+# ── News Ingest Pipeline (TypeScript) ────────────────────────
+# Estas variables se leen vía env vars en el ingestor.
+# Copiá los valores que quieras cambiar a news-ingest-pipeline/.env
+[ingest]
+llm_model             = "claude-haiku-4-5"
+max_articles_per_run  = 2000
+max_articles_per_feed = 100

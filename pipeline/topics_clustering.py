@@ -32,12 +32,13 @@ from typing import Optional
 
 import numpy as np
 
+from config_loader import config as _cfg
 from naming import classify_event
 from pg_store import load_event_centroids, replace_topic_centroids
 
-
-# Paralelismo. Haiku tiene rate limits MUY altos así que con 12-16 estás bien.
-MAX_WORKERS = int(os.getenv("MAX_WORKERS_TOPICS", "10"))
+_top_cfg = _cfg.get("topics", {})
+# env var sobreescribe config.toml para ajuste rápido en producción
+MAX_WORKERS = int(os.getenv("MAX_WORKERS_TOPICS") or _top_cfg.get("max_workers", 10))
 
 
 def _slugify(text: str, max_len: int = 30) -> str:
