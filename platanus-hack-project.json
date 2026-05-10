@@ -1,5 +1,6 @@
 {
-  "project-name": "<FILL THIS>",
-  "project-oneliner-spanish": "<FILL THIS>",
-  "project-description-spanish": "<FILL THIS>"
+  "project-name": "alethIA",
+  "project-oneliner-spanish": "Te acercamos al hecho, no a la noticia.",
+  "project-description-spanish": "alethIA recolecta noticias de múltiples medios argentinos, analiza cómo cada fuente encuadra los mismos hechos de manera distinta, detecta contradicciones entre versiones y deriva la mejor aproximación consensuada a la verdad.",
+  "deploy-url": "https://frontend-snowy-sigma-68qmpeb3q0.vercel.app/"
 }
