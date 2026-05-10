@@ -7,6 +7,8 @@ const schema = z.object({
   SUPABASE_URL: z.string().url(),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
   ANTHROPIC_API_KEY: z.string().min(1),
+  // Modelo LLM — ver config.toml [ingest] llm_model para el valor por defecto del proyecto
+  LLM_MODEL: z.string().default('claude-haiku-4-5'),
   USER_AGENT: z.string().default('scraper/1.0'),
   LOG_LEVEL: z.enum(['trace', 'debug', 'info', 'warn', 'error']).default('info'),
   MAX_ARTICLES_PER_RUN: z.coerce.number().default(2000),

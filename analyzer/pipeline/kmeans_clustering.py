@@ -38,8 +38,11 @@ try:
 except ImportError:
     _HAS_UMAP = False
 
-from ai.naming import log_naming_error, name_cluster
-from storage.pg_store import fetch_cluster_metadata, load_all_embeddings, replace_events
+from config_loader import config as _cfg
+from naming import log_naming_error, name_cluster
+from pg_store import fetch_cluster_metadata, load_all_embeddings, replace_events
+
+_cl_cfg = _cfg.get("clustering", {})
 
 
 def _slugify(text: str, max_len: int = 50) -> str:
@@ -65,14 +68,12 @@ def _project_2d(matrix: np.ndarray) -> tuple[np.ndarray, str, float | None]:
     n = matrix.shape[0]
 
     if _HAS_UMAP and n >= 4:
-        # n_neighbors balancea local (chico) vs global (grande). Para N=149,
-        # 25 da un buen punto medio. Cap a min(n-1, 30) para datasets chicos.
-        n_neighbors = max(2, min(25, n - 1))
+        n_neighbors = max(2, min(_UMAP_N_NEIGHBORS, n - 1))
         reducer = UMAP(
             n_components=2,
             metric="cosine",
             n_neighbors=n_neighbors,
-            min_dist=0.15,
+            min_dist=_UMAP_MIN_DIST,
             random_state=RANDOM_STATE,
             n_jobs=1,           # n_jobs>1 rompe la reproducibilidad con random_state
         )
@@ -100,15 +101,14 @@ def _normalize_to_unit(coords: np.ndarray) -> np.ndarray:
     out[:, 1] /= max_abs_y
     return out
 
-# Tunables
-K_MIN = 2
-MIN_PER_CLUSTER = 3   # piso de artículos por cluster — define K_MAX dinámico = N // MIN_PER_CLUSTER
-RANDOM_STATE = 42
-
-# Heterogéneo splitting: si Claude marca un cluster como heterogéneo, lo sub-clusterizamos.
-MAX_RECURSION_DEPTH = 2     # cuántas veces podemos sub-dividir antes de aceptar el cluster como está
-MIN_FOR_SUBCLUSTER = 4      # por debajo no tiene sentido split (poca señal interna)
-SUB_K_MAX = 4               # K máximo del sub-KMeans interno
+K_MIN               = int(_cl_cfg.get("k_min",               2))
+MIN_PER_CLUSTER     = int(_cl_cfg.get("min_per_cluster",     3))
+RANDOM_STATE        = int(_cl_cfg.get("random_state",       42))
+MAX_RECURSION_DEPTH = int(_cl_cfg.get("max_recursion_depth", 2))
+MIN_FOR_SUBCLUSTER  = int(_cl_cfg.get("min_for_subcluster",  4))
+SUB_K_MAX           = int(_cl_cfg.get("sub_k_max",           4))
+_UMAP_N_NEIGHBORS   = int(_cl_cfg.get("umap_n_neighbors",   25))
+_UMAP_MIN_DIST      = float(_cl_cfg.get("umap_min_dist",   0.15))
 
 
 def _sweep_k(matrix: np.ndarray, k_min: int, k_max: int) -> tuple[int, float, list[tuple[int, float]]]:

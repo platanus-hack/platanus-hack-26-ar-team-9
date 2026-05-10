@@ -22,7 +22,7 @@ export async function normalize(
 
     try {
       const response = await client.messages.create({
-        model: 'claude-haiku-4-5',
+        model: config.LLM_MODEL,
         max_tokens: 2048,
         system: SYSTEM_PROMPT,
         messages,
