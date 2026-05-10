@@ -4,7 +4,9 @@ import { ArrowLeft } from "lucide-react";
 import { ConsensusBlock } from "@/components/ConsensusBlock";
 import { IsolatedDataBlock } from "@/components/IsolatedDataBlock";
 import { DiscrepanciesBlock } from "@/components/DiscrepanciesBlock";
+import { ArticlesBlock } from "@/components/ArticlesBlock";
 import { loadEvents, loadEventDetail } from "@/lib/mockData";
+import { getEventDetail } from "@/lib/api";
 import { colorForBand, labelForBand } from "@/lib/colors";
 
 interface PageProps {
@@ -31,7 +33,7 @@ export default async function EventPage({ params }: PageProps) {
   const event = data.events.find((e) => e.id === id || e.slug === id);
   if (!event) notFound();
 
-  const detail = await loadEventDetail(id);
+  const detail = await getEventDetail(id);
   const color = colorForBand(event.divergence_band);
 
   return (
@@ -91,9 +93,9 @@ export default async function EventPage({ params }: PageProps) {
         </header>
 
         <ConsensusBlock facts={detail.verdad_consensuada} />
-        <DiscrepanciesBlock items={detail.contradicciones} />
-        <IsolatedDataBlock items={detail.datos_aislados} />
-
+        <DiscrepanciesBlock items={detail.contradicciones} articles={detail.articles} />
+        <IsolatedDataBlock items={detail.datos_aislados} articles={detail.articles} />
+        <ArticlesBlock articles={detail.articles || []} />
         <footer className="text-center text-xs text-[--color-text-muted] tracking-wide pt-2 pb-4">
           Cobertura por: {event.media_sources.join(" · ")}
         </footer>

@@ -39,8 +39,15 @@ export async function getGigaCentroids(): Promise<GigaCentroidsResponse> {
   const source = getDataSource();
 
   if (source === "supabase") {
+    // PostgREST sobre la tabla topic_centroids — sin RPC, no aporta nada
+    // envolver un SELECT en una función. Ojo: el order chain replica el
+    // ORDER BY del schema original (volume DESC, label ASC).
     const supabase = getSupabase();
-    const { data, error } = await supabase.rpc("get_giga_centroids");
+    const { data, error } = await supabase
+      .from("topic_centroids")
+      .select("id, label, x, y, volume, avg_divergence, color_band, summary")
+      .order("volume", { ascending: false })
+      .order("label", { ascending: true });
     if (error) throw error;
     return {
       generated_at: new Date().toISOString(),
@@ -69,10 +76,14 @@ export async function getCentroidEvents(
   const source = getDataSource();
 
   if (source === "supabase") {
+    // Idem: PostgREST + filter sobre la tabla, no necesitamos RPC.
     const supabase = getSupabase();
-    const { data, error } = await supabase.rpc("get_centroid_events", {
-      p_centroid_id: centroidId,
-    });
+    const { data, error } = await supabase
+      .from("events")
+      .select("id, slug, title, x, y, media_count, divergence, divergence_band, summary, keywords")
+      .eq("topic_centroid_id", centroidId)
+      .order("media_count", { ascending: false })
+      .order("published_at", { ascending: false });
     if (error) throw error;
     return { centroid_id: centroidId, events: (data ?? []) as CentroidEvent[] };
   }
@@ -105,20 +116,50 @@ export async function getEventDetail(idOrSlug: string): Promise<EventDetail> {
 
   if (source === "supabase") {
     const supabase = getSupabase();
-    const { data, error } = await supabase
+    
+    // Get event details first
+    const { data: eventData, error: eventError } = await supabase
       .from("event_details")
       .select("verdad_consensuada, datos_aislados, contradicciones")
       .eq("event_id", idOrSlug)
       .maybeSingle();
-    if (error) throw error;
-    if (!data) {
+    
+    if (eventError) throw eventError;
+    
+    // Step 1: Get GUIDs for this event
+    const { data: guidsData, error: guidsError } = await supabase
+      .from("event_articles")
+      .select("guid")
+      .eq("event_id", idOrSlug);
+    
+    if (guidsError) throw guidsError;
+    
+    // Step 2: Get articles by GUIDs with media info
+    let articles: any[] = [];
+    if (guidsData && guidsData.length > 0) {
+      const guids = guidsData.map((row: any) => row.guid);
+      const { data: articlesData, error: articlesError } = await supabase
+        .from("articles")
+        .select("url, guid, medium_slug, title, summary, author, published_at, language, topics, media!inner(slug, name, feed_url, base_url)")
+        .in("guid", guids);
+      
+      if (articlesError) throw articlesError;
+      articles = (articlesData || []) as any[];
+    }
+    
+    if (!eventData) {
       return {
         verdad_consensuada: ["Aún no hay un análisis detallado para este evento."],
         datos_aislados: [],
         contradicciones: [],
+        articles: [],
       };
     }
-    return data as EventDetail;
+    
+    return {
+      ...eventData,
+      articles,
+    } as EventDetail;
   }
 
   if (source === "local") {

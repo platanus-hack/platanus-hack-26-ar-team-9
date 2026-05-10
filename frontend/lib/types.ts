@@ -28,17 +28,20 @@ export interface EventsPayload {
 export interface IsolatedFact {
   hecho: string;
   fuente: string;
+  url?: string;
 }
 
 export interface Contradiction {
   punto_de_choque: string;
   versiones: Record<string, string>;
+  urls?: Record<string, string>;
 }
 
 export interface EventDetail {
   verdad_consensuada: string[];
   datos_aislados: IsolatedFact[];
   contradicciones: Contradiction[];
+  articles?: (Article & { media: Media })[];
 }
 
 export interface Filters {
@@ -89,4 +92,33 @@ export interface CentroidEvent {
 export interface CentroidEventsResponse {
   centroid_id: string;
   events: CentroidEvent[];
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Article types (for news links in clusters)
+// ─────────────────────────────────────────────────────────────────────
+
+export interface Article {
+  url: string;
+  guid: string;
+  medium_slug: string;
+  title: string;
+  summary?: string;
+  body?: string;
+  author?: string;
+  published_at?: string;
+  language?: string;
+  topics?: string[];
+}
+
+export interface Media {
+  slug: string;
+  name: string;
+  feed_url?: string;
+  base_url?: string;
+}
+
+export interface EventArticlesResponse {
+  event_id: string;
+  articles: (Article & { media: Media })[];
 }
