@@ -1,0 +1,330 @@
+{
+  "topic_politica": {
+    "centroid_id": "topic_politica",
+    "events": [
+      {
+        "id": "evt_001",
+        "slug": "libra-investigacion",
+        "title": "Investigación por el caso $LIBRA avanza en el Congreso",
+        "x": -0.41,
+        "y": 0.20,
+        "media_count": 9,
+        "divergence": 0.86,
+        "divergence_band": "high",
+        "summary": "La comisión investigadora avanzó con declaraciones cruzadas. Los medios difieren sobre el grado de responsabilidad presidencial.",
+        "keywords": ["libra", "milei", "cripto", "investigación", "congreso"]
+      },
+      {
+        "id": "evt_002",
+        "slug": "andis-coimas-sira",
+        "title": "Causa ANDIS: levantan secreto de sumario en investigación SIRA",
+        "x": -0.48,
+        "y": 0.12,
+        "media_count": 8,
+        "divergence": 0.78,
+        "divergence_band": "high",
+        "summary": "El levantamiento del secreto expuso chats y audios sobre coimas en el sistema SIRA.",
+        "keywords": ["andis", "sira", "coimas", "importaciones", "adorni"]
+      },
+      {
+        "id": "evt_003",
+        "slug": "dnu-recortes-universidades",
+        "title": "DNU recorta partidas a universidades nacionales",
+        "x": -0.36,
+        "y": 0.24,
+        "media_count": 11,
+        "divergence": 0.74,
+        "divergence_band": "high",
+        "summary": "El decreto reasigna fondos. Mientras unos medios hablan de 'ajuste', otros lo presentan como 'reordenamiento'.",
+        "keywords": ["dnu", "universidades", "presupuesto", "milei", "recorte"]
+      },
+      {
+        "id": "evt_005",
+        "slug": "adorni-andis",
+        "title": "Adorni se desliga de la causa ANDIS en conferencia de prensa",
+        "x": -0.45,
+        "y": 0.22,
+        "media_count": 7,
+        "divergence": 0.62,
+        "divergence_band": "medium",
+        "summary": "El vocero presidencial negó conocimiento. Los medios opositores destacan inconsistencias.",
+        "keywords": ["adorni", "andis", "vocero", "conferencia"]
+      }
+    ]
+  },
+  "topic_economia": {
+    "centroid_id": "topic_economia",
+    "events": [
+      {
+        "id": "evt_004",
+        "slug": "dolar-blue-record",
+        "title": "El dólar blue tocó nuevo récord histórico",
+        "x": 0.42,
+        "y": -0.28,
+        "media_count": 12,
+        "divergence": 0.18,
+        "divergence_band": "low",
+        "summary": "Dato duro: nuevo máximo nominal. Casi todos los medios lo reportan con cifras consistentes.",
+        "keywords": ["dolar", "blue", "mep", "ccl", "mercado"]
+      },
+      {
+        "id": "evt_010",
+        "slug": "inflacion-abril",
+        "title": "INDEC: la inflación de abril fue del 4.2%",
+        "x": 0.48,
+        "y": -0.32,
+        "media_count": 11,
+        "divergence": 0.22,
+        "divergence_band": "low",
+        "summary": "Dato oficial. Variaciones menores en la lectura política.",
+        "keywords": ["inflacion", "indec", "abril", "ipc"]
+      },
+      {
+        "id": "evt_011",
+        "slug": "riesgo-pais-baja",
+        "title": "El riesgo país bajó a niveles pre-electorales",
+        "x": 0.46,
+        "y": -0.25,
+        "media_count": 8,
+        "divergence": 0.35,
+        "divergence_band": "low",
+        "summary": "Caída sostenida del EMBI Argentina. Discrepancias menores sobre la atribución del fenómeno.",
+        "keywords": ["riesgo pais", "bonos", "mercado"]
+      },
+      {
+        "id": "evt_012",
+        "slug": "exportaciones-soja",
+        "title": "Exportaciones de soja superan expectativas trimestrales",
+        "x": 0.50,
+        "y": -0.34,
+        "media_count": 6,
+        "divergence": 0.41,
+        "divergence_band": "medium",
+        "summary": "Cosecha récord más liquidación adelantada por incentivos cambiarios.",
+        "keywords": ["soja", "exportaciones", "agro", "campo"]
+      }
+    ]
+  },
+  "topic_seguridad": {
+    "centroid_id": "topic_seguridad",
+    "events": [
+      {
+        "id": "evt_020",
+        "slug": "operativo-rosario",
+        "title": "Operativo de gendarmería en barrios de Rosario",
+        "x": 0.03,
+        "y": 0.60,
+        "media_count": 9,
+        "divergence": 0.58,
+        "divergence_band": "medium",
+        "summary": "Operativo conjunto. Versiones encontradas sobre el balance entre detenciones y operativo policial.",
+        "keywords": ["rosario", "narcotrafico", "gendarmeria", "operativo"]
+      },
+      {
+        "id": "evt_021",
+        "slug": "violencia-genero-cifras",
+        "title": "Cifras anuales de violencia de género muestran caída en denuncias",
+        "x": 0.07,
+        "y": 0.65,
+        "media_count": 7,
+        "divergence": 0.52,
+        "divergence_band": "medium",
+        "summary": "Ministerio publica datos. Disputa interpretativa: ¿menos violencia o menos canal de denuncia?",
+        "keywords": ["genero", "violencia", "estadisticas"]
+      },
+      {
+        "id": "evt_022",
+        "slug": "policia-bonaerense",
+        "title": "Reforma de la Policía Bonaerense entra al Senado provincial",
+        "x": 0.05,
+        "y": 0.58,
+        "media_count": 6,
+        "divergence": 0.48,
+        "divergence_band": "medium",
+        "summary": "Proyecto de Kicillof. Oposición pide cambios sustanciales antes de la aprobación.",
+        "keywords": ["policia", "bonaerense", "reforma", "kicillof"]
+      }
+    ]
+  },
+  "topic_internacional": {
+    "centroid_id": "topic_internacional",
+    "events": [
+      {
+        "id": "evt_030",
+        "slug": "cumbre-mercosur",
+        "title": "Cumbre Mercosur: tensiones sobre el acuerdo con la UE",
+        "x": -0.53,
+        "y": -0.46,
+        "media_count": 8,
+        "divergence": 0.45,
+        "divergence_band": "medium",
+        "summary": "Reunión en Asunción. Diferencias entre posición argentina y brasileña sobre cláusulas ambientales.",
+        "keywords": ["mercosur", "ue", "lula", "milei"]
+      },
+      {
+        "id": "evt_031",
+        "slug": "trump-aranceles",
+        "title": "Trump anuncia nuevos aranceles que afectarían exportaciones argentinas",
+        "x": -0.58,
+        "y": -0.50,
+        "media_count": 9,
+        "divergence": 0.38,
+        "divergence_band": "low",
+        "summary": "Nueva ronda de tarifas. Cancillería evalúa impacto sobre carnes y limones.",
+        "keywords": ["trump", "aranceles", "comercio"]
+      },
+      {
+        "id": "evt_032",
+        "slug": "venezuela-elecciones",
+        "title": "Cancillería argentina sobre elecciones en Venezuela",
+        "x": -0.55,
+        "y": -0.42,
+        "media_count": 7,
+        "divergence": 0.42,
+        "divergence_band": "medium",
+        "summary": "Posición oficial argentina. Lectura ideológica del acto electoral en disputa.",
+        "keywords": ["venezuela", "elecciones", "cancilleria"]
+      }
+    ]
+  },
+  "topic_justicia": {
+    "centroid_id": "topic_justicia",
+    "events": [
+      {
+        "id": "evt_040",
+        "slug": "cfk-vialidad",
+        "title": "Casación confirma condena en causa Vialidad",
+        "x": 0.60,
+        "y": 0.40,
+        "media_count": 12,
+        "divergence": 0.85,
+        "divergence_band": "high",
+        "summary": "Cámara confirma. Versiones polarizadas sobre alcance, pruebas y motivaciones del fallo.",
+        "keywords": ["cfk", "vialidad", "casacion", "condena"]
+      },
+      {
+        "id": "evt_041",
+        "slug": "corte-suprema-vacante",
+        "title": "Pliegos para Corte Suprema vuelven al Senado",
+        "x": 0.65,
+        "y": 0.45,
+        "media_count": 8,
+        "divergence": 0.78,
+        "divergence_band": "high",
+        "summary": "Tratamiento legislativo. Disputa sobre vínculos de los candidatos con el oficialismo.",
+        "keywords": ["corte", "suprema", "pliegos", "senado"]
+      },
+      {
+        "id": "evt_042",
+        "slug": "consejo-magistratura",
+        "title": "Consejo de la Magistratura sin quórum por tercera vez",
+        "x": 0.58,
+        "y": 0.43,
+        "media_count": 6,
+        "divergence": 0.72,
+        "divergence_band": "high",
+        "summary": "Sesión frustrada. Cada bloque atribuye la responsabilidad al otro.",
+        "keywords": ["magistratura", "consejo", "quorum"]
+      }
+    ]
+  },
+  "topic_sociedad": {
+    "centroid_id": "topic_sociedad",
+    "events": [
+      {
+        "id": "evt_050",
+        "slug": "censo-resultados",
+        "title": "INDEC publica resultados finales del Censo 2024",
+        "x": -0.06,
+        "y": -0.03,
+        "media_count": 7,
+        "divergence": 0.25,
+        "divergence_band": "low",
+        "summary": "Datos demográficos. Coincidencia general en la lectura.",
+        "keywords": ["censo", "indec", "demografia"]
+      },
+      {
+        "id": "evt_051",
+        "slug": "salud-mental-jovenes",
+        "title": "Estudio nacional sobre salud mental en jóvenes",
+        "x": -0.10,
+        "y": -0.08,
+        "media_count": 5,
+        "divergence": 0.32,
+        "divergence_band": "low",
+        "summary": "Universidades publican relevamiento. Lecturas convergentes sobre los datos.",
+        "keywords": ["salud mental", "jovenes", "estudio"]
+      },
+      {
+        "id": "evt_052",
+        "slug": "transporte-tarifa",
+        "title": "AMBA: nueva escala tarifaria de transporte público",
+        "x": -0.04,
+        "y": -0.02,
+        "media_count": 6,
+        "divergence": 0.40,
+        "divergence_band": "medium",
+        "summary": "Aumentos escalonados. Discrepancias en la presentación: 'actualización' vs 'tarifazo'.",
+        "keywords": ["transporte", "tarifa", "amba", "subte"]
+      }
+    ]
+  },
+  "topic_deportes": {
+    "centroid_id": "topic_deportes",
+    "events": [
+      {
+        "id": "evt_060",
+        "slug": "messi-argentina",
+        "title": "Messi confirma presencia en próxima ventana de selección",
+        "x": 0.66,
+        "y": -0.60,
+        "media_count": 11,
+        "divergence": 0.12,
+        "divergence_band": "low",
+        "summary": "Convocatoria oficial. Casi sin diferencias entre los medios.",
+        "keywords": ["messi", "seleccion", "argentina"]
+      },
+      {
+        "id": "evt_061",
+        "slug": "river-boca-superliga",
+        "title": "River y Boca lideran tabla de la Liga Profesional",
+        "x": 0.70,
+        "y": -0.65,
+        "media_count": 8,
+        "divergence": 0.18,
+        "divergence_band": "low",
+        "summary": "Resultados de la fecha. Cobertura homogénea.",
+        "keywords": ["river", "boca", "superliga", "futbol"]
+      }
+    ]
+  },
+  "topic_cultura": {
+    "centroid_id": "topic_cultura",
+    "events": [
+      {
+        "id": "evt_070",
+        "slug": "feria-libro",
+        "title": "Feria del Libro de Buenos Aires bate récord de visitantes",
+        "x": -0.70,
+        "y": 0.53,
+        "media_count": 7,
+        "divergence": 0.20,
+        "divergence_band": "low",
+        "summary": "Cifras récord. Sin disputas significativas en la cobertura.",
+        "keywords": ["feria", "libro", "cultura", "buenos aires"]
+      },
+      {
+        "id": "evt_071",
+        "slug": "incaa-presupuesto",
+        "title": "INCAA: nuevo plan de fomento al cine independiente",
+        "x": -0.74,
+        "y": 0.57,
+        "media_count": 5,
+        "divergence": 0.36,
+        "divergence_band": "low",
+        "summary": "Anuncio oficial. Diferencias menores sobre alcance presupuestario.",
+        "keywords": ["incaa", "cine", "fomento"]
+      }
+    ]
+  }
+}

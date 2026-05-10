@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-05-09T10:00:00Z",
+  "centroids": [
+    {
+      "id": "topic_politica",
+      "label": "Política",
+      "x": -0.42,
+      "y": 0.18,
+      "volume": 14,
+      "avg_divergence": 0.72,
+      "color_band": "high",
+      "summary": "14 historias en disputa hoy"
+    },
+    {
+      "id": "topic_economia",
+      "label": "Economía",
+      "x": 0.45,
+      "y": -0.30,
+      "volume": 11,
+      "avg_divergence": 0.38,
+      "color_band": "low",
+      "summary": "11 historias — alta consonancia"
+    },
+    {
+      "id": "topic_seguridad",
+      "label": "Seguridad",
+      "x": 0.05,
+      "y": 0.62,
+      "volume": 9,
+      "avg_divergence": 0.55,
+      "color_band": "medium",
+      "summary": "9 historias — versiones mixtas"
+    },
+    {
+      "id": "topic_internacional",
+      "label": "Internacional",
+      "x": -0.55,
+      "y": -0.48,
+      "volume": 8,
+      "avg_divergence": 0.41,
+      "color_band": "medium",
+      "summary": "8 historias del exterior"
+    },
+    {
+      "id": "topic_justicia",
+      "label": "Justicia",
+      "x": 0.62,
+      "y": 0.42,
+      "volume": 7,
+      "avg_divergence": 0.81,
+      "color_band": "high",
+      "summary": "7 causas con versiones encontradas"
+    },
+    {
+      "id": "topic_sociedad",
+      "label": "Sociedad",
+      "x": -0.08,
+      "y": -0.05,
+      "volume": 6,
+      "avg_divergence": 0.32,
+      "color_band": "low",
+      "summary": "6 historias del día a día"
+    },
+    {
+      "id": "topic_deportes",
+      "label": "Deportes",
+      "x": 0.68,
+      "y": -0.62,
+      "volume": 5,
+      "avg_divergence": 0.18,
+      "color_band": "low",
+      "summary": "5 historias deportivas"
+    },
+    {
+      "id": "topic_cultura",
+      "label": "Cultura",
+      "x": -0.72,
+      "y": 0.55,
+      "volume": 4,
+      "avg_divergence": 0.28,
+      "color_band": "low",
+      "summary": "4 historias culturales"
+    }
+  ]
+}

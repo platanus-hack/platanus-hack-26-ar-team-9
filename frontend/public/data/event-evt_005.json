@@ -1,0 +1,44 @@
+{
+  "verdad_consensuada": [
+    "Manuel Adorni dio una conferencia de prensa el día indicado en Casa Rosada.",
+    "Adorni rechazó las acusaciones en su contra y pidió 'no ensuciar la gestión'.",
+    "Recibió respaldo explícito del presidente vía redes y declaraciones de funcionarios."
+  ],
+  "datos_aislados": [
+    {
+      "hecho": "Mención de un encuentro privado entre Adorni y Bullrich previo a la conferencia.",
+      "fuente": "Página/12"
+    },
+    {
+      "hecho": "Adorni habría considerado renunciar la noche anterior.",
+      "fuente": "C5N"
+    },
+    {
+      "hecho": "Cita textual: 'Estoy más fuerte que nunca'.",
+      "fuente": "Clarín"
+    }
+  ],
+  "contradicciones": [
+    {
+      "punto_de_choque": "Tono y mensaje de la conferencia",
+      "versiones": {
+        "Clarín": "Adorni se mostró firme, sólido y respaldado por todo el gabinete.",
+        "Página/12": "La conferencia fue defensiva y dejó más dudas que certezas."
+      }
+    },
+    {
+      "punto_de_choque": "Posición de Bullrich",
+      "versiones": {
+        "Infobae": "Bullrich respaldó plenamente al vocero presidencial.",
+        "Diario Neuquino": "Bullrich condicionó su apoyo a que se aclaren las dudas judiciales."
+      }
+    },
+    {
+      "punto_de_choque": "Futuro político de Adorni",
+      "versiones": {
+        "TN": "Su continuidad está garantizada hasta fin de año.",
+        "Tiempo Argentino": "Su salida es cuestión de semanas según fuentes del propio oficialismo."
+      }
+    }
+  ]
+}

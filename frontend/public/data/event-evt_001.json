@@ -1,0 +1,45 @@
+{
+  "verdad_consensuada": [
+    "La Comisión Investigadora del caso $LIBRA sesionó el día indicado.",
+    "Se citó a declarar a funcionarios y asesores vinculados a la promoción del token.",
+    "El presidente Javier Milei publicó un tweet promocionando $LIBRA en febrero.",
+    "El precio del token colapsó pocas horas después del tweet."
+  ],
+  "datos_aislados": [
+    {
+      "hecho": "Mención de 4400 inversores afectados en una causa colateral.",
+      "fuente": "Página/12"
+    },
+    {
+      "hecho": "Vinculación con una empresa registrada en Singapur con domicilio fiscal compartido.",
+      "fuente": "Infobae"
+    },
+    {
+      "hecho": "Cita textual de Milei: 'Yo no promocioné, solo difundí'.",
+      "fuente": "Noticias Argentinas / TN"
+    }
+  ],
+  "contradicciones": [
+    {
+      "punto_de_choque": "Responsabilidad del presidente",
+      "versiones": {
+        "Clarín": "El presidente solo difundió, no promocionó. Versión oficial.",
+        "Página/12": "Hubo promoción explícita y conflicto de interés con desarrolladores."
+      }
+    },
+    {
+      "punto_de_choque": "Daños totales declarados",
+      "versiones": {
+        "La Nación": "Las pérdidas serían de unos USD 4 millones según fuentes judiciales.",
+        "Tiempo Argentino": "Las pérdidas superan los USD 250 millones según querellantes."
+      }
+    },
+    {
+      "punto_de_choque": "Estado de la causa",
+      "versiones": {
+        "Infobae": "La causa avanza pero sin imputaciones formales todavía.",
+        "C5N": "Hay tres imputados con pedido de indagatoria firme."
+      }
+    }
+  ]
+}
